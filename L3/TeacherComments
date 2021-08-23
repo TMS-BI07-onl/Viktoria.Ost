@@ -1,0 +1,36 @@
+Well done!
+
+2.
+a)
+Expected result:
+SELECT Name,
+		CASE WHEN StandardCost=0 OR StandardCost IS NULL THEN 'Not for sale'
+			WHEN StandardCost>0 AND StandardCost<100 THEN '<$100'
+			WHEN StandardCost >=100 AND StandardCost<500 THEN '<$500'
+			ELSE '>$500'
+		END AS PriceRange
+FROM Production.Product
+In this task it's better to use CASE function, because we have multiple conditions.
+Technically, while writing second and third condition for this task you could leave only <100 and <500, because all conditions is being checked in the written order. It's just for your information. :)
+
+3.
+a)-1
+Correct answers:
+SELECT Название
+FROM Фирмы-производители 
+WHERE id NOT IN (SELECT преп.id_фирмы
+				FROM Фармпрепараты преп
+						JOIN Продажи прод ON преп.id=прод.id_фармпрепарата
+						JOIN Кассовые_чеки чек ON прод.id_чека=чек.id 
+				WHERE YEAR(Дата)=2019)
+--=
+SELECT преп.id_фирмы
+FROM Фирмы-производители фирма 
+	JOIN Фармпрепараты преп ON фирма.id=преп.id_фирмы
+	JOIN Продажи прод ON преп.id=прод.id_фармпрепарата
+	LEFT JOIN Кассовые_чеки чек ON прод.id_чека=чек.id 
+WHERE YEAR(Дата)=2019 AND чек.id IS NULL
+Your solution will catch an error while processing, because you are referring to the general table in the inner query. (id=Kass.id)
+
+
+Mark:6+1
