@@ -1,0 +1,9 @@
+Well done!
+
+3)-0.25
+Row number is returning unique number for each row, but to have unique numbers for rank and dense_rank you need to have unique values in each row (for column that you use in PARTITION BY).
+
+f)
+Why do you join tables yourself if you can (and should) use view vSalesPerson?
+
+Mark: 10.
