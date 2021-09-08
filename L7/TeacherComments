@@ -1,0 +1,9 @@
+Well done!
+
+A
+We can't store equivalent values in multiple columns if order is not fixed.
+
+E -0.5
+We can't just delete the data column (in case if it's not a calculated field). New province can be added after new insert or it's just a subset of data.
+
+Mark: 10
