@@ -1,0 +1,47 @@
+--Задачи 
+1) Найдите людей и их номера телефонов, код города которых начинается на  4 и заканчивается на 5.
+( таблицы Person.PersonPhone, Person.Person) 
+
+*Вслепую, базы Adventureworks снесла, чтоб освободить место*
+Select per.Name, ph.Phone from Person.Person per
+join Person.PersonPhone ph
+on per.personID=ph.personID
+where ph.Phone like '4_5%'
+
+
+2) Отнести каждого человека из [HumanResources].[Employee] в свою возрастную категорию:
+Adolescence: 17-20
+Adults: 21-59
+Elderly: 60-75
+Senile: 76-90
+
+Select EmpID,
+case when datediff(yy,BirthDate,getdate()) between 17 and 20 then 'Adolescence'
+when datediff(yy,BirthDate,getdate()) between 21 and 59 then 'Adults'
+when datediff(yy,BirthDate,getdate()) between 60 and 75 then 'Elderly'
+when datediff(yy,BirthDate,getdate()) between 76 and 90 then 'Senile'
+else 'still alive!'
+end AgeCat
+from [HumanResources].[Employee]
+
+3) Вывести самый дорогой продукт для каждого цвета из [Production].[Product]
+
+Select color, maxprice, productID
+from Production.Product,
+(select color, max(price) maxprice from Production.Product pr
+group by color) pr
+where color=pr.color and price=maxprice 
+
+4)
+Темы: 4  Автосалон
+Требования: 7 сущностей + придумать задачу
+
+Таблица Автосалон (id салона, город, id поставщика)
+Таблица Поставщик (id поставщика, страна, id класса)
+Таблица Сервис (id сервис-центра, id салона, id класса, адрес)
+Таблица Классы (id класса, класс, id авто)
+Таблица Автомобили (id авто, модель, пробег, цена)
+Таблица Покупатели (id покупателя, id авто, город)
+Таблица Техобслуживание (id заказа, id покупателя, id сервис-центра, услуга)
+
+Найти, на купленные в каком из городов подержанные автомобили покупателям пришлось вложить сумму в дальнейшее ТО, дотянувшую до цены нового автомобиля Премиум-класса.
