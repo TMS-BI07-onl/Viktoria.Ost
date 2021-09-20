@@ -1,0 +1,21 @@
+Well done!
+
+Homework
+Your answer is correct!
+I would suggest to use IS NOT NULL filter, not !='', it's not really professional. :)
+
+Test
+1
+What was the reason to have маршруты outside of CTE?
+I'm not really getting the point of having count(Рейсы.[id рейса]) = 0. Why so?
+Queries with no CTE are easier to understand. At least, for me personally.
+
+2
+-2
+a
+I think that subquery with top1 won't return expected result, because it already got 1 row before joining by passenger id. So, the join result will be NULL.
+b
+I'm pretty sure that your idea with Поездки.[id пассажира]=п.[id пассажира] will not work as you desired. This part of query has only one connection to поездки and doesn't see any connection from major query 'from' clause.
+
+Mark: 10
+Test: 8
