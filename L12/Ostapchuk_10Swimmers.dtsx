@@ -1,0 +1,1479 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/22/2021 3:44:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="HOMEPC"
+  DTS:CreatorName="HOMEPC\User"
+  DTS:DTSID="{066471BC-B0C3-4B14-83BD-6608830886E2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="Ostapchuk_10Swimmers"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{92FDF9E5-A51B-482C-9C83-32DC57D67D73}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOMEPC\SQLEXPRESS.SWIMMING_Comp]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{DDE4D936-1623-4619-880F-C59D04468758}"
+      DTS:ObjectName="HOMEPC\SQLEXPRESS.SWIMMING_Comp">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=HOMEPC\SQLEXPRESS;Initial Catalog=SWIMMING_Comp;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[HOMEPC\SQLEXPRESS.SWIMMING_Comp 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0E161FD3-F3E9-4CBC-99DE-0D98B573EFDA}"
+      DTS:ObjectName="HOMEPC\SQLEXPRESS.SWIMMING_Comp 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=HOMEPC\SQLEXPRESS;Initial Catalog=SWIMMING_Comp;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Задача потока данных"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Задача потока данных"
+      DTS:DTSID="{823A8A57-6C19-4E1A-A1AE-CEA6CFF84F6B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Задача потока данных"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Задача потока данных\Выборка строк"
+              componentClassID="Microsoft.RowSampling"
+              contactInfo="Выборка строк;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;0"
+              description="Выполняет случайную выборку определенного количества строк из потока входных данных. Пример: случайный выбор продуктов для отображения на веб-сайте."
+              name="Выборка строк">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает количество строк в выборке."
+                  expressionType="Notify"
+                  name="SamplingValue">10</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает начальное значение генератора случайных чисел."
+                  name="SamplingSeed">33</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1]"
+                  name="Выборка строк Вход 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[TrainerID]"
+                      cachedDataType="r8"
+                      cachedName="TrainerID"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[TrainerID]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FirstName"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LastName"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[PassportNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PassportNumber"
+                      cachedSortKeyPosition="-1"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[PassportNumber]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Gender"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[BirthDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BirthDate"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[CareerStart]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CareerStart"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[CareerStart]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[Rank]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rank"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Rank]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[Сountry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Сountry"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Сountry]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1].Columns[DopingRec]"
+                      cachedDataType="bool"
+                      cachedName="DopingRec"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[DopingRec]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные]"
+                  name="Выбранные">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Выходные данные для строк в выборке"
+                      name="Selected">true</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[TrainerID]"
+                      dataType="r8"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[TrainerID]"
+                      name="TrainerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[TrainerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[PassportNumber]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[PassportNumber]"
+                      name="PassportNumber">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[PassportNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Gender]"
+                      name="Gender">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[BirthDate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[BirthDate]"
+                      name="BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[CareerStart]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[CareerStart]"
+                      name="CareerStart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[CareerStart]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Rank]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Rank]"
+                      name="Rank">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Rank]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Сountry]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Сountry]"
+                      name="Сountry">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Сountry]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[DopingRec]"
+                      dataType="bool"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[DopingRec]"
+                      name="DopingRec">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[DopingRec]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные]"
+                  name="Невыбранные">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Выходные данные для строк в выборке"
+                      name="Selected">false</property>
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[TrainerID]"
+                      dataType="r8"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[TrainerID]"
+                      name="TrainerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[TrainerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[LastName]"
+                      name="LastName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[PassportNumber]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[PassportNumber]"
+                      name="PassportNumber">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[PassportNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[Gender]"
+                      name="Gender">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[BirthDate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[BirthDate]"
+                      name="BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[CareerStart]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[CareerStart]"
+                      name="CareerStart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[CareerStart]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[Rank]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[Rank]"
+                      name="Rank">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Rank]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[Сountry]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[Сountry]"
+                      name="Сountry">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Сountry]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[DopingRec]"
+                      dataType="bool"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Невыбранные].Columns[DopingRec]"
+                      name="DopingRec">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID журнала преобразований входного столбца"
+                          name="InputColumnLineageID">#{Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[DopingRec]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Источник &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;7"
+              description="Источник &quot;OLE DB&quot;"
+              name="Источник &quot;OLE DB&quot;"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[dbo].[10SWMRS]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Переменная, содержащая команду SQL для выполнения."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Сопоставления между параметрами в команде SQL и переменными."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HOMEPC\SQLEXPRESS.SWIMMING_Comp]"
+                  connectionManagerRefId="Package.ConnectionManagers[HOMEPC\SQLEXPRESS.SWIMMING_Comp]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;]"
+                  name="Выход источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[TrainerID]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[TrainerID]"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[TrainerID]"
+                      name="TrainerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[FirstName]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[LastName]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[PassportNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[PassportNumber]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[PassportNumber]"
+                      name="PassportNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Gender]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[BirthDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[BirthDate]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[CareerStart]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[CareerStart]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[CareerStart]"
+                      name="CareerStart"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Rank]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Rank]"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Rank]"
+                      name="Rank"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Сountry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Сountry]"
+                      length="50"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Сountry]"
+                      name="Сountry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DopingRec]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Преобразование"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[DopingRec]"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DopingRec]"
+                      name="DopingRec"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[TrainerID]"
+                      dataType="r8"
+                      name="TrainerID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[PassportNumber]"
+                      dataType="wstr"
+                      length="255"
+                      name="PassportNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[BirthDate]"
+                      dataType="wstr"
+                      length="255"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[CareerStart]"
+                      dataType="wstr"
+                      length="255"
+                      name="CareerStart" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Rank]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rank" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[Сountry]"
+                      dataType="wstr"
+                      length="50"
+                      name="Сountry" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].ExternalColumns[DopingRec]"
+                      dataType="bool"
+                      name="DopingRec" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;]"
+                  isErrorOut="true"
+                  name="Вывод ошибок источника &quot;OLE DB&quot;">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[TrainerID]"
+                      dataType="r8"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[TrainerID]"
+                      name="TrainerID" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[PassportNumber]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[PassportNumber]"
+                      name="PassportNumber" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[BirthDate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[CareerStart]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[CareerStart]"
+                      name="CareerStart" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Rank]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Rank]"
+                      name="Rank" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Сountry]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[Сountry]"
+                      name="Сountry" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[DopingRec]"
+                      dataType="bool"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[DopingRec]"
+                      name="DopingRec" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Вывод ошибок источника &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Назначение &quot;OLE DB&quot;;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;4"
+              description="Назначение &quot;OLE DB&quot;"
+              name="Назначение &quot;OLE DB&quot;"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Время ожидания команды, в секундах. Величина 0 означает неограниченное время ожидания."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowset">[dbo].[Swimmer]</property>
+                <property
+                  dataType="System.String"
+                  description="Указывает переменную, содержащую имя объекта базы данных, используемого для открытия набора строк."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Команда SQL для выполнения."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает кодовую страницу столбца, используемую, когда недоступны сведения о кодовой странице из источника данных."
+                  name="DefaultCodePage">1251</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Вызывает безусловное использование значение свойства DefaultCodePage при описании символьных данных."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает используемый режим доступа к базе данных."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, должны ли значения в столбцах идентификаторов копироваться в назначение. Если свойство имеет значение false, значения в столбцах идентификаторов будут созданы автоматически в месте назначения. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, будут ли в назначение вставляться значения NULL для столбцов, содержащих их. Значение false показывает, что если столбец имеет значение NULL, то в назначение будет вставлено его значение по умолчанию. Применяется только в случае, если включена быстрая загрузка."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Задает параметры быстрой загрузки. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Задает, когда выдаются сообщения о фиксации транзакции в ходе вставки данных. Значение 0 задает, что по окончании вставки данных будет выдано одно сообщение о фиксации транзакции. Применяется только в том случае, если включена быстрая загрузка."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[HOMEPC\SQLEXPRESS.SWIMMING_Comp 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[HOMEPC\SQLEXPRESS.SWIMMING_Comp 1]"
+                  description="Соединение OLE DB среды выполнения, используемое для доступа к базе данных."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]"
+                  errorOrTruncationOperation="Вставить"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Вход назначения &quot;OLE DB&quot;">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[TrainerID]"
+                      cachedDataType="r8"
+                      cachedName="TrainerID"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[TrainerID]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[TrainerID]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[FirstName]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[LastName]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[PassportNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PassportNumber"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[PassportNumber]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[PassportNumber]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Gender]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[BirthDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[BirthDate]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[CareerStart]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CareerStart"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[CareerStart]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[CareerStart]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Rank]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rank"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Rank]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Rank]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[Сountry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Сountry"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Сountry]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[Сountry]" />
+                    <inputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].Columns[DopingRec]"
+                      cachedDataType="bool"
+                      cachedName="DopingRec"
+                      externalMetadataColumnId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[DopingRec]"
+                      lineageId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные].Columns[DopingRec]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[SwimmerID]"
+                      dataType="i4"
+                      name="SwimmerID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[TrainerID]"
+                      dataType="i4"
+                      name="TrainerID" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="50"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="50"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[PassportNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="PassportNumber" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[CareerStart]"
+                      dataType="dbDate"
+                      name="CareerStart" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Rank]"
+                      dataType="wstr"
+                      length="10"
+                      name="Rank" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[Сountry]"
+                      codePage="1251"
+                      dataType="str"
+                      length="50"
+                      name="Сountry" />
+                    <externalMetadataColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;].ExternalColumns[DopingRec]"
+                      dataType="bool"
+                      name="DopingRec" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Вывод ошибок назначения &quot;OLE DB&quot;"
+                  synchronousInputId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Outputs[Вывод ошибок назначения &quot;OLE DB&quot;].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Задача потока данных\Сортировка"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Сортировка;Корпорация Майкрософт. Microsoft SQL Server. (C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены. http://www.microsoft.com/sql/support;1"
+              description="Сортирует входные данные по возрастанию или убыванию, если выполнить сортировку в источнике нельзя. Пример: сортировка данных продаж по полю &quot;customer id&quot; перед записью в неструктурированный файл и передачей в другой отдел. Примечание. Это преобразование не рекомендуется применять к большим потокам данных."
+              name="Сортировка"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Указывает, удаляет ли преобразование &quot;Сортировка&quot; строки с повторяющимися значениями сортировки."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Указывает максимальное число потоков, используемых для сортировки."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки]"
+                  name="Вход сортировки">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[TrainerID]"
+                      cachedDataType="r8"
+                      cachedName="TrainerID"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[TrainerID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="FirstName"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[FirstName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="LastName"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[LastName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[PassportNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PassportNumber"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[PassportNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">-1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Gender"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[BirthDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BirthDate"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[CareerStart]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CareerStart"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[CareerStart]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[Rank]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rank"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Rank]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[Сountry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Сountry"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[Сountry]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки].Columns[DopingRec]"
+                      cachedDataType="bool"
+                      cachedName="DopingRec"
+                      lineageId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;].Columns[DopingRec]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Задает параметры сравнения символьных данных."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Указывает порядок сортировки столбца."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки]"
+                  isSorted="true"
+                  name="Выход сортировки">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[TrainerID]"
+                      dataType="r8"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[TrainerID]"
+                      name="TrainerID">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[TrainerID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[FirstName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[FirstName]"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[FirstName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[LastName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[LastName]"
+                      name="LastName"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[LastName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[PassportNumber]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[PassportNumber]"
+                      name="PassportNumber"
+                      sortKeyPosition="-1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[PassportNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Gender]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Gender]"
+                      name="Gender">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[BirthDate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[BirthDate]"
+                      name="BirthDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[CareerStart]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[CareerStart]"
+                      name="CareerStart">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[CareerStart]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Rank]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Rank]"
+                      name="Rank">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[Rank]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Сountry]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[Сountry]"
+                      name="Сountry">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[Сountry]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[DopingRec]"
+                      dataType="bool"
+                      lineageId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки].Columns[DopingRec]"
+                      name="DopingRec">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Указывает идентификатор журнала обращений и преобразований входного столбца, связанного с этим выходным столбцом."
+                          name="SortColumnId">#{Package\Задача потока данных\Источник "OLE DB".Outputs[Выход источника "OLE DB"].Columns[DopingRec]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Задача потока данных.Paths[Выбранные]"
+              endId="Package\Задача потока данных\Назначение &quot;OLE DB&quot;.Inputs[Вход назначения &quot;OLE DB&quot;]"
+              name="Выбранные"
+              startId="Package\Задача потока данных\Выборка строк.Outputs[Выбранные]" />
+            <path
+              refId="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
+              endId="Package\Задача потока данных\Сортировка.Inputs[Вход сортировки]"
+              name="Выход источника &quot;OLE DB&quot;"
+              startId="Package\Задача потока данных\Источник &quot;OLE DB&quot;.Outputs[Выход источника &quot;OLE DB&quot;]" />
+            <path
+              refId="Package\Задача потока данных.Paths[Выход сортировки]"
+              endId="Package\Задача потока данных\Выборка строк.Inputs[Выборка строк Вход 1]"
+              name="Выход сортировки"
+              startId="Package\Задача потока данных\Сортировка.Outputs[Выход сортировки]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Задача потока данных"
+          TopLeft="118,57" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Задача потока данных">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="178,42"
+          Id="Package\Задача потока данных\Источник &quot;OLE DB&quot;"
+          TopLeft="214,46" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Задача потока данных\Сортировка"
+          TopLeft="238,175" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Задача потока данных\Выборка строк"
+          TopLeft="230,314" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Задача потока данных\Назначение &quot;OLE DB&quot;"
+          TopLeft="222,435" />
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выход сортировки]"
+          TopLeft="308,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,97"
+              Start="0,0"
+              End="0,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выход источника &quot;OLE DB&quot;]"
+          TopLeft="305.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87"
+              Start="0,0"
+              End="0,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Задача потока данных.Paths[Выбранные]"
+          TopLeft="308,356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,79"
+              Start="0,0"
+              End="10,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.5"
+                    Point2="0,39.5"
+                    Point3="4,39.5" />
+                  <mssgle:LineSegment
+                    End="6,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,39.5"
+                    Point2="10,39.5"
+                    Point3="10,43.5" />
+                  <mssgle:LineSegment
+                    End="10,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-21.77634765625,44.5,53.5526953125,11.6533203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Задача потока данных\Источник &quot;OLE DB&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Задача потока данных\Назначение &quot;OLE DB&quot;">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
