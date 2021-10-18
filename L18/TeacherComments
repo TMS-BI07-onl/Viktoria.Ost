@@ -1,6 +1,6 @@
 Well done!
 
-1. -0.5 
+1.
 Why not to join tables?
 
 3. -0.5
@@ -9,4 +9,4 @@ We can do this in the one query.
 5. -1
 What is the need in the subquery and aggregations? By your solutions you're calculating cases when employee had worked in dep1, then dep2, and then back in dep1. You calculating all the difference between min and max date and that is not correct.
 
-Mark: 8
+Mark: 9
